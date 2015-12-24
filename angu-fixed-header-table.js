@@ -19,6 +19,12 @@
         function link($scope, $elem, $attrs, $ctrl) {
             var elem = $elem[0];
 
+            // if not defined table-height attribute of the table takes the value defautl.
+            var isUndefined = angular.isUndefined($attrs.tableHeight);
+            if (isUndefined) {|
+                $attrs.tableHeight = '250px';
+            }
+
             // wait for data to load and then transform the table
             $scope.$watch(tableDataLoaded, function(isTableDataLoaded) {
                 if (isTableDataLoaded) {
